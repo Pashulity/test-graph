@@ -20,9 +20,8 @@ public class UndirectedGraph<V, E> extends AbstractGraph<V, E> implements Graph<
         checkVertexExists(source);
         checkVertexExists(target);
         if (source.equals(target)) return;
-        UndirectedEdgeHolder<E> eEdgeHolder = (UndirectedEdgeHolder<E>) graphMap.get(source);
-        eEdgeHolder.getEdges().add(edge);
-        eEdgeHolder.getEdges().add(edge);
+        ((UndirectedEdgeHolder<E>) graphMap.get(source)).getEdges().add(edge);
+        ((UndirectedEdgeHolder<E>) graphMap.get(target)).getEdges().add(edge);
         vertexPairMap.put(edge, new VertexPair<>(source, target));
     }
 

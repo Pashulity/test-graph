@@ -21,9 +21,8 @@ public class DirectedGraph<V, E> extends AbstractGraph<V, E> {
         checkVertexExists(source);
         checkVertexExists(target);
         if (source.equals(target)) return;
-        DirectedEdgeHolder<E> edgeHolder = (DirectedEdgeHolder<E>) graphMap.get(source);
-        edgeHolder.getOutgoingEdges().add(edge);
-        edgeHolder.getIncomingEdges().add(edge);
+        graphMap.get(source).getOutgoingEdges().add(edge);
+        ((DirectedEdgeHolder<E>) graphMap.get(target)).getIncomingEdges().add(edge);
         vertexPairMap.put(edge, new VertexPair<>(source, target));
     }
 
